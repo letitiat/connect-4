@@ -12,7 +12,7 @@ const GameProgress: FC = () => {
   } = usePlayers();
   return (
     <Heading as="h3" size="lg">
-      {gameOver ? `${name} wins!` : `${name}'s turn`}
+      {gameOver ? `${name} wins! 🎉` : `${name}'s turn`}
     </Heading>
   );
 };

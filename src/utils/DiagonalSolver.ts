@@ -1,5 +1,3 @@
-import { boardCols, boardRows } from "const";
-
 interface DiagonalInput {
     col: number,
     row: number,
