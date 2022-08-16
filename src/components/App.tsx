@@ -4,11 +4,13 @@ import GameControls from "components/GameControls";
 import GameProgress from "components/GameProgress";
 import { FC } from "react";
 import { RecoilRoot } from "recoil";
+import PlayerSelectorModal from "./player-selector/PlayerSelectorModal";
 
 const App: FC = () => (
   <ChakraProvider>
     <RecoilRoot>
       <Container py={4} as={VStack}>
+        <PlayerSelectorModal />
         <Board />
         <GameProgress />
         <GameControls />

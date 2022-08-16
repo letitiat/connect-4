@@ -1,5 +1,4 @@
-import { boardCols } from "const";
-import { boardRows } from "const";
+import { boardCols, boardRows } from "const";
 
 interface DiagonalInput {
     col: number,
@@ -8,15 +7,15 @@ interface DiagonalInput {
 
 class DiagonalSolver {
     board: number[][];
-    width: number;
+    colCount: number;
     maxX: number;
     maxY: number;
 
     constructor(newBoard: number[][]) {
         this.board = newBoard;
-        this.width = this.board.length;
-        this.maxX = this.width - 1;
-        this.maxY = boardRows - 1;
+        this.colCount = this.board.length;
+        this.maxX = this.colCount - 1;
+        this.maxY = 5;
     }
 
     /**
@@ -53,7 +52,7 @@ class DiagonalSolver {
 
         let y = col + row;
 
-        for (let i = 0; i < this.width; i++) {
+        for (let i = 0; i < this.colCount; i++) {
             result.push(this.getBoardValue(i, y));
             y--;
         }
@@ -68,7 +67,7 @@ class DiagonalSolver {
         const result = [];
 
         let x = col - row;
-        for (let i = 0; i < this.width; i++) {
+        for (let i = 0; i < this.colCount; i++) {
             result.push(this.getBoardValue(x, i));
             x++;
         }

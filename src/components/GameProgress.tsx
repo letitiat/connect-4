@@ -1,14 +1,15 @@
 import { Heading } from "@chakra-ui/react";
-import { playerName } from "const";
+import usePlayers from "hooks/usePlayers";
 import { FC } from "react";
 import { useRecoilValue } from "recoil";
-import { gameOverState, playerState } from "state";
+import { gameOverState, } from "state";
 
 const GameProgress: FC = () => {
-  const player = useRecoilValue(playerState);
   const gameOver = useRecoilValue(gameOverState);
-  const name = playerName[player];
 
+  const {
+    currentPlayer: { name },
+  } = usePlayers();
   return (
     <Heading as="h3" size="lg">
       {gameOver ? `${name} wins!` : `${name}'s turn`}

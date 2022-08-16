@@ -1,13 +1,13 @@
 import { Circle, Flex } from "@chakra-ui/react";
-import { boardRows, playerColor } from "const";
+import { boardRows } from "const";
 import { usePlayPiece } from "hooks";
+import usePlayers from "hooks/usePlayers";
 import { FC } from "react";
-import { useRecoilValue } from "recoil";
 // Returns the value of the given Recoil state.
 // This hook will subscribe the component to
 // re-render if there are changes in the Recoil state.
-import { boardState, gameOverState, playerState } from "state";
-import { Player } from "types";
+import { useRecoilValue } from "recoil";
+import { boardState, gameOverState } from "state";
 
 const padCol = (col: number[]): number[] =>
   col.join("").padEnd(boardRows, "0").split("").map(Number);
@@ -15,8 +15,12 @@ const padCol = (col: number[]): number[] =>
 const Board: FC = () => {
   const play = usePlayPiece();
   const board = useRecoilValue(boardState);
-  const player = useRecoilValue(playerState);
   const gameOver = useRecoilValue(gameOverState);
+
+  const {
+    currentPlayer: { colour },
+    getPlayerColour,
+  } = usePlayers();
 
   return (
     <Flex justify="center">
@@ -34,7 +38,7 @@ const Board: FC = () => {
               size="40px"
               key={`${i}-${j}`}
               boxShadow="inner"
-              bg={playerColor[p as Player] || "gray.300"}
+              bg={getPlayerColour(p)}
             />
           ))}
           <Circle
@@ -42,7 +46,7 @@ const Board: FC = () => {
             size="40px"
             boxShadow="base"
             visibility="hidden"
-            bg={playerColor[player]}
+            bg={colour}
             _groupHover={{
               visibility: gameOver ? "hidden" : "visible",
             }}
