@@ -4,7 +4,10 @@ import {
 } from "@chakra-ui/react";
 import { FC } from "react";
 import { useRecoilState } from "recoil";
-import { player1State, player2State, } from "state";
+import {
+    player1State,
+    player2State
+} from "state";
 import SinglePlayerSelector from "./SinglePlayerSelector";
 
 const PlayerSelector: FC = () => {
@@ -13,7 +16,6 @@ const PlayerSelector: FC = () => {
     const [player2, setPlayer2] = useRecoilState(player2State);
 
     return (
-
         <Flex justify="spaceBetween">
             <SinglePlayerSelector
                 placeholder="Paul Chuckle"

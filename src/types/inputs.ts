@@ -1,5 +1,6 @@
 import { PlayerObject } from "./game";
 
+// equivalent of PropTypes.Shape (kinda)
 export type SinglePlayerSelectorInput = {
     placeholder: string,
     player: PlayerObject

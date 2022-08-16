@@ -14,16 +14,26 @@ export const boardState = atom<Board>({
 export const playerState = atom<Player>({
   key: "playerState",
   default: 1,
+  effects: [
+    localStorageEffect('playerState'),
+  ]
 });
 
 export const gameOverState = atom<boolean>({
   key: "gameOverState",
   default: false,
+  effects: [
+    localStorageEffect('gameOverState'),
+  ]
 });
 
 export const player1State = atom<PlayerObject>({
   key: "player1State",
-  default: { id: 1, name: 'Blue', colour: 'blue.500' },
+  default: {
+    id: 1,
+    name: 'Blue',
+    colour: 'blue.500'
+  },
   effects: [
     localStorageEffect('player1State'),
   ]
@@ -31,7 +41,11 @@ export const player1State = atom<PlayerObject>({
 
 export const player2State = atom<PlayerObject>({
   key: "player2State",
-  default: { id: 2, name: 'Red', colour: 'red.500' },
+  default: {
+    id: 2,
+    name: 'Red',
+    colour: 'red.500'
+  },
   effects: [
     localStorageEffect('player2State'),
   ]

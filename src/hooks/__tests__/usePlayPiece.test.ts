@@ -63,7 +63,7 @@ test("should win with 4 in a row diagonally ascending", () => {
   assertGame(1, true, [[1], [2, 1], [2, 2, 1], [1, 2, 2, 1], [1], [], []]);
 });
 
-test("should win with 4 in a row diagonally descending", () => {
+test("should win with 4 in a row diagonally deending", () => {
   const { play, assertGame } = render();
 
   [3, 2, 2, 1, 0, 1, 1, 0, 1, 0, 0].forEach(play);

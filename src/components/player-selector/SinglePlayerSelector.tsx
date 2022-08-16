@@ -13,6 +13,7 @@ const SinglePlayerSelector: FC<SinglePlayerSelectorInput> = ({
     updatePlayer,
 }) => {
 
+    // Updates the name in the player X state 
     const updatePlayerName = (name: string) => {
         updatePlayer((p: SinglePlayerSelectorInput) => ({
             ...p,
@@ -20,6 +21,7 @@ const SinglePlayerSelector: FC<SinglePlayerSelectorInput> = ({
         }));
     };
 
+    // Updates the colour in the player X state 
     const updatePlayerColour = (colour: string) => {
         updatePlayer((p: SinglePlayerSelectorInput) => ({
             ...p,

@@ -9,6 +9,9 @@ import { FC } from "react";
 import { useRecoilValue } from "recoil";
 import { boardState, gameOverState } from "state";
 
+// Gets current array and pads out with 0s to length of boardRows
+// This means that '0' is passed through to the board to render
+// grey default circles/full board
 const padCol = (col: number[]): number[] =>
   col.join("").padEnd(boardRows, "0").split("").map(Number);
 
@@ -32,15 +35,17 @@ const Board: FC = () => {
           flexDirection="column-reverse"
           cursor={gameOver ? "auto" : "pointer"}
         >
-          {padCol(col).map((p, j) => (
-            <Circle
-              m={1}
-              size="40px"
-              key={`${i}-${j}`}
-              boxShadow="inner"
-              bg={getPlayerColour(p)}
-            />
-          ))}
+          {
+            padCol(col).map((p, j) => (
+              <Circle
+                m={1}
+                size="40px"
+                key={`${i}-${j}`}
+                boxShadow="inner"
+                bg={getPlayerColour(p)}
+              />
+            ))
+          }
           <Circle
             m={1}
             size="40px"

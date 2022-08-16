@@ -1,7 +1,8 @@
-import { act, renderHook } from "@testing-library/react";
+import { renderHook } from "@testing-library/react";
 import { usePlayers } from "hooks";
 import { RecoilRoot } from "recoil";
 
+// Gives us ability to use recoil state
 const render = () => {
     const { result } = renderHook(
         () => usePlayers(), {
