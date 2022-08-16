@@ -32,7 +32,7 @@ const render = () => {
   };
 };
 
-test("should win with 4 in a row vertically", () => {
+test("should win with 4 in a row vertically", () => {  
   const { play, assertGame } = render();
 
   [0, 1, 0, 1, 0, 1, 0].forEach(play);
