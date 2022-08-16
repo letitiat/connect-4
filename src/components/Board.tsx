@@ -3,6 +3,9 @@ import { boardRows, playerColor } from "const";
 import { usePlayPiece } from "hooks";
 import { FC } from "react";
 import { useRecoilValue } from "recoil";
+// Returns the value of the given Recoil state.
+// This hook will subscribe the component to
+// re-render if there are changes in the Recoil state.
 import { boardState, gameOverState, playerState } from "state";
 import { Player } from "types";
 

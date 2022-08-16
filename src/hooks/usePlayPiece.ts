@@ -1,8 +1,13 @@
 import { boardRows } from "const";
 import { useRecoilState } from "recoil";
+// Returns a tuple where the first element is the value of state and the
+// second element is a setter function that will update the value of the
+// given state when called.
 import { boardState, gameOverState, playerState } from "state";
+import { DiagonalSolver } from "utils/DiagonalSolver";
 
 const testWin = (arr: number[]): boolean => /1{4}|2{4}/.test(arr.join(""));
+// Checks for 4 '1's or 4 '2's in a row
 
 const usePlayPiece = () => {
   const [board, setBoard] = useRecoilState(boardState);
@@ -26,10 +31,22 @@ const usePlayPiece = () => {
     );
 
     const row = newBoard[col].length - 1;
+    const diagonalSolver = new DiagonalSolver(newBoard);
+
+    const {
+      diagonalLeftArray,
+      diagonalRightArray,
+    } = diagonalSolver.getDiagonalArrays({
+      col,
+      row,
+    });
 
     if (
       testWin(newBoard[col]) || // Did win vertically
-      testWin(newBoard.map((col) => col[row] || 0)) // Did win horizontally
+      testWin(newBoard.map((col) => col[row] || 0)) || // Did win horizontally
+      testWin(diagonalLeftArray) ||
+      testWin(diagonalRightArray)
+      // To win diagonally
       // TODO: Did win diagonally
     ) {
       setGameOver(true);
